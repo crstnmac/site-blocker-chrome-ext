@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>DeepFocus Pro Options</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input {
+      margin-bottom: 10px;
+    }
+
+    button {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>DeepFocus Pro Options</h1>
+
+  <h2>Blocked Websites</h2>
+  <textarea id="blockedSites" rows="5" cols="50"></textarea>
+
+  <h2>Pomodoro Settings</h2>
+  <label>
+    Work Duration (minutes):
+    <input type="number" id="workDuration" min="1" value="25">
+  </label>
+  <label>
+    Break Duration (minutes):
+    <input type="number" id="breakDuration" min="1" value="5">
+  </label>
+  <label>
+    Long Break Duration (minutes):
+    <input type="number" id="longBreakDuration" min="1" value="15">
+  </label>
+  <label>
+    Long Break Interval (sessions):
+    <input type="number" id="longBreakInterval" min="1" value="4">
+  </label>
+
+  <h2>Task Integration</h2>
+  <button id="connectTodoist">Connect Todoist</button>
+  <button id="connectTrello">Connect Trello</button>
+  <button id="connectJira">Connect Jira</button>
+
+  <h2>Team Collaboration</h2>
+  <label>
+    Team ID:
+    <input type="text" id="teamId">
+  </label>
+
+  <button id="saveOptions">Save Options</button>
+
+  <div id="status"></div>
+
+  <script type="module" src="main.ts"></script>
+</body>
+
+</html>

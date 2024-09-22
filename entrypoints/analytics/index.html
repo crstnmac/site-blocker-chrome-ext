@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DeepFocus Pro Analytics</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .chart {
+      width: 80%;
+      /* Adjusted width */
+      height: 200px;
+      /* Adjusted height */
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>DeepFocus Pro Analytics</h1>
+
+  <h2>Focus Time Overview</h2>
+  <div class="chart">
+    <canvas id="focusTimeChart"></canvas>
+  </div>
+
+  <h2>Session Distribution</h2>
+  <div class="chart">
+    <canvas id="sessionDistributionChart" class="chart"></canvas>
+  </div>
+
+  <h2>Productivity Trends</h2>
+  <div class="chart">
+    <canvas id="productivityTrendChart" class="chart"></canvas>
+  </div>
+
+  <h2>Summary Statistics</h2>
+
+  <div class="chart">
+    <ul id="summaryStats"></ul>
+  </div>
+
+  <script type="module" src="main.ts"></script>
+</body>
+
+</html>
