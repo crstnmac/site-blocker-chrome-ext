@@ -42,7 +42,7 @@ function App() {
         setBlockedUrl(url)
       }
 
-      console.log('fetching data', url, blockedUrl)
+      console.log('fetching data app.tsx', url, blockedUrl)
     }
 
     fetchCurrentTabUrl()
@@ -51,41 +51,24 @@ function App() {
 
   const handleBlockSite = async () => {
     const domain = extractDomain(url)
-    const response = await browser.runtime.sendMessage({
-      type: 'block-site',
-      data: {domain},
-    })
-    if (response.error) {
-      setErrorMessage(response.error)
-    } else {
-      setIsBlocked(true)
-      setBlockedUrl(url)
-      // Update the current tab to a blocked page with the current URL as a parameter
-      await browser.tabs.update({
-        url: `block.html?url=${encodeURIComponent(url)}`,
-      })
-    }
-  }
 
-  function extractUrlParameter(url: string, name: string) {
-    const match = RegExp('[?&]' + name + '=([^&]*)').exec(url)
-    return match && decodeURIComponent(match[1].replace(/\+/g, ' '))
+    console.log('Blocking site app.tsx:', domain)
+    console.log('Current URL app.tsx:', url)
+
+    await browser.runtime.sendMessage({type: 'block-site', data: {domain}})
+    setIsBlocked(true)
+    setBlockedUrl(url)
   }
 
   const handleUnblockSite = async () => {
     const domain = extractDomain(blockedUrl)
 
-    console.log('Unblocking site:', domain)
-    console.log('Blocked URL:', blockedUrl)
+    console.log('Unblocking site app.tsx:', domain)
+    console.log('Blocked URL app.tsx:', blockedUrl)
 
     await browser.runtime.sendMessage({type: 'unblock-site', data: {domain}})
     setIsBlocked(false)
     setBlockedUrl('')
-
-    // Redirect to the original URL after unblocking
-    await browser.tabs.update({
-      url: extractUrlParameter(blockedUrl, 'url') || blockedUrl || '',
-    }) // Redirect to the original blocked URL
   }
 
   const extractDomain = (url: string): string => {

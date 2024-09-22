@@ -27,41 +27,18 @@
 <body>
   <h1>DeepFocus Pro Options</h1>
 
-  <h2>Blocked Websites</h2>
-  <textarea id="blockedSites" rows="5" cols="50"></textarea>
-
-  <h2>Pomodoro Settings</h2>
   <label>
-    Work Duration (minutes):
-    <input type="number" id="workDuration" min="1" value="25">
-  </label>
-  <label>
-    Break Duration (minutes):
-    <input type="number" id="breakDuration" min="1" value="5">
-  </label>
-  <label>
-    Long Break Duration (minutes):
-    <input type="number" id="longBreakDuration" min="1" value="15">
-  </label>
-  <label>
-    Long Break Interval (sessions):
-    <input type="number" id="longBreakInterval" min="1" value="4">
+    <input type="checkbox" id="enabled" />
+    Enable DeepFocus Pro
   </label>
 
-  <h2>Task Integration</h2>
-  <button id="connectTodoist">Connect Todoist</button>
-  <button id="connectTrello">Connect Trello</button>
-  <button id="connectJira">Connect Jira</button>
-
-  <h2>Team Collaboration</h2>
-  <label>
-    Team ID:
-    <input type="text" id="teamId">
+  <h1>Blocked sites</h1>
+  <label for="blocked-sites">
+    <input type="text" id="blocked-sites" aria-labelledby="blocked-sites-label" />
+    <span id="blocked-sites-label" class="sr-only">Blocked Sites</span>
   </label>
 
-  <button id="saveOptions">Save Options</button>
-
-  <div id="status"></div>
+  <button id="save">Save</button>
 
   <script type="module" src="main.ts"></script>
 </body>

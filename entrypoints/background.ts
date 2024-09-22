@@ -54,6 +54,7 @@ export default defineBackground(() => {
 
   function extractUrlParameter(url: string, name: string) {
     const match = RegExp('[?&]' + name + '=([^&]*)').exec(url)
+
     return match && decodeURIComponent(match[1].replace(/\+/g, ' '))
   }
 
@@ -73,9 +74,11 @@ export default defineBackground(() => {
     if (tabs[0]?.id) {
       const url = extractUrlParameter(tabs[0].url || '', 'url') // Extract the original URL from the blocked page
 
+      console.log('Unblocking site:', url)
+
       // Redirect to the original site after unblocking
       await browser.tabs.update(tabs[0].id, {
-        url: url || tabs[0].url || '',
+        url: url!
       }) // Use the original URL or a default
     }
     sendResponse({message: 'site unblocked'})
